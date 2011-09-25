@@ -102,11 +102,8 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'urls'
 
-TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
-)
+import os
+TEMPLATE_DIRS = (os.path.join(os.path.dirname(__file__), 'templates'),)
 
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -143,3 +140,6 @@ LOGGING = {
         },
     }
 }
+
+# ----------------- SELENIUM ----------------------
+TEST_RUNNER = 'django_selenium.selenium_runner.SeleniumTestRunner'
