@@ -142,4 +142,5 @@ LOGGING = {
 }
 
 # ----------------- SELENIUM ----------------------
+SELENIUM_PATH='/home/dragoon/selenium-server.jar'
 TEST_RUNNER = 'django_selenium.selenium_runner.SeleniumTestRunner'
