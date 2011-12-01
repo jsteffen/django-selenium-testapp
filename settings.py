@@ -1,4 +1,5 @@
 # Django settings for django-selenium-testapp project.
+import os
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -6,6 +7,8 @@ TEMPLATE_DEBUG = DEBUG
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )
+
+PROJECT_DIR = os.path.abspath(os.path.dirname(__file__))
 
 MANAGERS = ADMINS
 
@@ -68,11 +71,6 @@ STATIC_URL = '/static/'
 ADMIN_MEDIA_PREFIX = '/static/admin/'
 
 # Additional locations of static files
-STATICFILES_DIRS = (
-    # Put strings here, like "/home/html/static" or "C:/www/django/static".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
-)
 
 # List of finder classes that know how to find static files in
 # various locations.
@@ -97,20 +95,28 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
 )
 
 ROOT_URLCONF = 'urls'
 
 import os
 TEMPLATE_DIRS = (os.path.join(os.path.dirname(__file__), 'templates'),)
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.request',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.media',
+    'django.core.context_processors.static',
+)
+
 
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
-    'django.contrib.messages',
+    'django.contrib.staticfiles',
     'tools',
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
@@ -144,3 +150,10 @@ LOGGING = {
 # ----------------- SELENIUM ----------------------
 SELENIUM_PATH='/home/dragoon/selenium-server.jar'
 TEST_RUNNER = 'django_selenium.selenium_runner.SeleniumTestRunner'
+SELENIUM_DISPLAY=":1"
+SELENIUM_PATH="/home/dragoon/selenium-server-standalone-2.7.0.jar"
+
+
+STATICFILES_DIRS = (os.path.join(PROJECT_DIR, 'static'),)
+STATIC_URL = '/static/'
+
