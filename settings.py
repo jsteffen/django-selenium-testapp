@@ -80,6 +80,8 @@ STATICFILES_FINDERS = (
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
+STATICFILES_DIRS = (os.path.join(PROJECT_DIR, 'static'),)
+
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = '_29sv-$^kyi&z0c#ddcs)8^etu+-hb@qlz9--wm!pfpj(6i%^u'
 
@@ -99,7 +101,6 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'urls'
 
-import os
 TEMPLATE_DIRS = (os.path.join(os.path.dirname(__file__), 'templates'),)
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
@@ -150,10 +151,4 @@ LOGGING = {
 # ----------------- SELENIUM ----------------------
 SELENIUM_PATH='/home/dragoon/selenium-server.jar'
 TEST_RUNNER = 'django_selenium.selenium_runner.SeleniumTestRunner'
-SELENIUM_DISPLAY=":1"
-SELENIUM_PATH="/home/dragoon/selenium-server-standalone-2.7.0.jar"
-
-
-STATICFILES_DIRS = (os.path.join(PROJECT_DIR, 'static'),)
-STATIC_URL = '/static/'
 
